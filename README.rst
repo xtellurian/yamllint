@@ -69,6 +69,34 @@ Alternatively using pip, the Python package manager:
 .. code:: bash
 
  pip install --user yamllint
+ 
+Using docker:
+
+.. code:: bash
+
+ docker pull xtellurian/yamllint:latest
+ docker run -v /path/to/yaml:/yaml xtellurian/yamllint:latest /yaml
+ 
+ 
+Alternately, using docker in VS Code, add this to 
+`VS Code tasks.json <https://code.visualstudio.com/docs/editor/tasks/>`_:
+
+.. code:: json
+
+ "tasks": [
+     {
+         "label": "Lint YAML",
+         "type": "shell",
+         "command": "docker",
+         "args": [
+             "run",
+             "-v", 
+             "${workspaceFolder}/:/yaml",
+             "xtellurian/yamllint:latest",
+             "/yaml"
+         ]
+     }
+ ]
 
 Usage
 ^^^^^
